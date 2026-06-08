@@ -1,7 +1,10 @@
 Source Link: https://colab.research.google.com/github/TheDarkExecutive/MachineLearningArc/blob/main/Sonar-RockvsMine-project%20\
+Video ref: https://www.youtube.com/watch?v=fiz1ORTBGpY&list=PLfFghEzKVmjsNtIRwErklMAN8nJmebB0I&index=29
 
 Learning: 
 importing numpy as np 
 import pandas as pd 
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LogisticRegression -> Importing the model type 
+
+
