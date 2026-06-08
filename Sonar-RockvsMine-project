@@ -1,5 +1,7 @@
 Source Link: https://colab.research.google.com/github/TheDarkExecutive/MachineLearningArc/blob/main/Sonar-RockvsMine-project%20\
 Video ref: https://www.youtube.com/watch?v=fiz1ORTBGpY&list=PLfFghEzKVmjsNtIRwErklMAN8nJmebB0I&index=29
+dataset link: https://drive.google.com/file/d/1pQxtljlNVh0DHYg-Ye7dtpDTlFceHVfa/view
+
 
 Learning: 
 importing numpy as np -> numerical python, [faster than classical python] 
