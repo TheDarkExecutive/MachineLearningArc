@@ -2,9 +2,58 @@ Source Link: https://colab.research.google.com/github/TheDarkExecutive/MachineLe
 Video ref: https://www.youtube.com/watch?v=fiz1ORTBGpY&list=PLfFghEzKVmjsNtIRwErklMAN8nJmebB0I&index=29
 
 Learning: 
-importing numpy as np 
-import pandas as pd 
+importing numpy as np -> numerical python, [faster than classical python] 
+import pandas as pd -> helps with data manipulation and analysis
 from sklearn.model_selection import train_test_split 
 from sklearn.linear_model import LogisticRegression -> Importing the model type 
+
+sonar_data = pd.read_csv("<file_path_in_collab>",header=None) #loading the dataset + header = none 
+sonar_data.head() -> reads the first rows of the dataset [0,1,2,3,4] 
+
+sonar_data.shape [number of rows x number of columns] 
+
+sonar_data.describe() [describes the statistical measure and central tendencies of the values] 
+sonar_data[60].value_counts -> funfact: Wouldnt be able to access the index of the column if the dataset had no columns whcih is why I had to explicitly mention in line 10
+sonar_data.groupby(60).mean() -> our 59th column in the dataset gives the information about M/R [Mine or Rock] 
+The following command in line 17 gives the mean respective to the values M/R
+
+X = sonar_data.drop(columns=60,axis=1) -> X keeps the values other than column 60 which contains the label of M/R. 
+(axis = 1 represents columns while axis = 0 is for rows) 
+Y= sonar_data[60] -> Y keeps the column data 
+
+X_train, X_test, Y_train, Y_test = train_test_split(X,Y, test_size=0.1, stratify=Y, random_state=1)
+
+''' test_size is generally 0.1 to 0.2 for testing size, stratify helps in maintaing the balance
+    random_state helps in reproducing the split again. 
+    Random_funfact: random_state = 42 as tribute to The Hitchhiker's Guide to the Galaxy where the supercomputer tries to solve the question to everything in the galaxy and the answer yields to 42
+'''
+model = LogisticRegression()
+model.fit(X_train,Y_train)
+#Using the data to train on the Logistic Regression model [Using logs. reg for binary classification - Mine vs Rock] 
+
+X_train_predict = model.predict(X_train)
+traindata_accuracy = accuracy_score(X_train_predict, Y_train)
+
+input_data = (<random_numerics from 0-1 as test_data>)
+'''
+NumPy conversion + reshaping ensures your data has the exact format scikit-learn expects: a 2D array with shape (1, 60) for one sample with 60 features. 
+This prevents the common "Expected 2D array, got 1D array" error
+'''
+
+input_data_as_numpy_array = np.asarray(input_data)
+input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+
+prediction = model.predict(input_data_reshaped)
+print(prediction)
+
+if (prediction[0]=='R'):
+  print('The object is a Rock')
+else:
+  print('The object is a mine')
+
+
+
+
+
 
 
